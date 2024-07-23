@@ -51,4 +51,4 @@ def load_cogs(bot):
 
 load_cogs(bot)
 
-bot.run("")
+bot.run(os.getenv("DISCORD_BOT_TOKEN"))
