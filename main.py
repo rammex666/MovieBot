@@ -3,6 +3,10 @@ from nextcord.ext import commands
 import os
 from tmdbv3api import TMDb
 import sqlite3
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 class MyBot(commands.Bot):
     def __init__(self, *args, **kwargs):
@@ -35,12 +39,14 @@ class MyBot(commands.Bot):
     def get_conn(self):
         return self.conn
 
+
 tmdb = TMDb()
-tmdb.api_key = ''
+tmdb.api_key = os.getenv("api_key")
 tmdb.language = 'fr'
 
 intents = nextcord.Intents.all()
 bot = MyBot(command_prefix='!', intents=intents)
+
 
 def load_cogs(bot):
     for folder in ['commands']:
@@ -49,5 +55,7 @@ def load_cogs(bot):
                 bot.load_extension(f'{folder}.{filename[:-3]}')
                 print(f"Loaded {filename}")
 
+
 load_cogs(bot)
 
+bot.run(os.getenv("DISCORD_BOT_TOKEN"))
