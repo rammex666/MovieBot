@@ -36,7 +36,7 @@ class MyBot(commands.Bot):
         return self.conn
 
 tmdb = TMDb()
-tmdb.api_key = 'fe0ae4fa57892edd640f85551413ec43'
+tmdb.api_key = ''
 tmdb.language = 'fr'
 
 intents = nextcord.Intents.all()
@@ -51,4 +51,4 @@ def load_cogs(bot):
 
 load_cogs(bot)
 
-bot.run("MTI2NTAzMjY4OTg0NTgwMTAzMg.GL9U71.ehSYADcXCNf4pSvNbPRG6LPADkR0qroh1xrkQc")
+bot.run("")
